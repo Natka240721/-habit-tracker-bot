@@ -23,6 +23,10 @@ TOKEN = os.getenv('BOT_TOKEN')
 if not TOKEN:
     raise ValueError("BOT_TOKEN not found in .env file!")
 
+ADMIN_CHAT_ID = os.getenv('ADMIN_CHAT_ID')
+if not ADMIN_CHAT_ID:
+    raise ValueError("ADMIN_CHAT_ID not found in .env file!")
+
 # Путь к файлу с привычками
 HABITS_FILE = 'data/habits.json'
 
@@ -443,7 +447,7 @@ async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         logger.error(f"Ошибка в обработчике message_handler: {e}")
 
-def main():
+async def main():
     """Запуск бота"""
     global BOT_START_TIME
     # Запоминаем время запуска бота в UTC с часовым поясом
@@ -458,9 +462,17 @@ def main():
     application.add_handler(CallbackQueryHandler(button_handler))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_handler))
     
+    # Отправляем сообщение в админский чат
+    try:
+        await application.bot.send_message(chat_id=ADMIN_CHAT_ID, text="привет")
+        logger.info("Startup message sent to admin chat")
+    except Exception as e:
+        logger.error(f"Failed to send startup message to admin chat: {e}")
+    
     # Запускаем бота
-    application.run_polling(allowed_updates=Update.ALL_TYPES, poll_interval=3.0)
+    await application.run_polling(allowed_updates=Update.ALL_TYPES, poll_interval=3.0)
 
 if __name__ == '__main__':
-    main() 
+    import asyncio
+    asyncio.run(main()) 
     
