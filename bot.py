@@ -72,10 +72,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработчик команды /start"""
     try:
         # Проверяем, не старое ли сообщение
-        message_time = update.message.date
-        if message_time < BOT_START_TIME:
-            logger.info(f"Игнорируем старое сообщение от {update.effective_user.id} (отправлено до запуска бота)")
-            return
+        if BOT_START_TIME is not None:  # Добавляем проверку на None
+            message_time = update.message.date
+            if message_time < BOT_START_TIME:
+                logger.info(f"Игнорируем старое сообщение от {update.effective_user.id} (отправлено до запуска бота)")
+                return
 
         user = update.effective_user
         logger.info(f"Пользователь {user.id} ({user.first_name}) запустил бота командой /start")
@@ -101,10 +102,11 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработчик нажатий на кнопки"""
     try:
         # Проверяем, не старое ли сообщение
-        message_time = update.callback_query.message.date
-        if message_time < BOT_START_TIME:
-            logger.info(f"Игнорируем старое callback от {update.effective_user.id} (отправлено до запуска бота)")
-            return
+        if BOT_START_TIME is not None:  # Добавляем проверку на None
+            message_time = update.callback_query.message.date
+            if message_time < BOT_START_TIME:
+                logger.info(f"Игнорируем старое callback от {update.effective_user.id} (отправлено до запуска бота)")
+                return
 
         query = update.callback_query
         user = query.from_user
@@ -326,10 +328,11 @@ async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработчик текстовых сообщений"""
     try:
         # Проверяем, не старое ли сообщение
-        message_time = update.message.date
-        if message_time < BOT_START_TIME:
-            logger.info(f"Игнорируем старое сообщение от {update.effective_user.id} (отправлено до запуска бота)")
-            return
+        if BOT_START_TIME is not None:  # Добавляем проверку на None
+            message_time = update.message.date
+            if message_time < BOT_START_TIME:
+                logger.info(f"Игнорируем старое сообщение от {update.effective_user.id} (отправлено до запуска бота)")
+                return
 
         user = update.effective_user
         text = update.message.text
