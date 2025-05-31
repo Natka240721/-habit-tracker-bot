@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import asyncio
 from datetime import datetime, time, timezone
 from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
@@ -470,9 +471,16 @@ async def main():
         logger.error(f"Failed to send startup message to admin chat: {e}")
     
     # Запускаем бота
+    await application.initialize()
+    await application.start()
     await application.run_polling(allowed_updates=Update.ALL_TYPES, poll_interval=3.0)
+    await application.stop()
 
 if __name__ == '__main__':
-    import asyncio
-    asyncio.run(main()) 
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("Бот остановлен пользователем")
+    except Exception as e:
+        print(f"Произошла ошибка: {e}") 
     
