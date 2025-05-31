@@ -9,8 +9,12 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Mess
 
 # Настройка логирования
 logging.basicConfig(
-    format='%(asctime)s - %(message)s',
-    level=logging.INFO
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO,
+    handlers=[
+        logging.StreamHandler(),  # Вывод в консоль
+        logging.FileHandler('bot.log')  # Сохранение в файл
+    ]
 )
 logger = logging.getLogger(__name__)
 
