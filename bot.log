@@ -590,3 +590,12 @@ telegram.error.Conflict: Conflict: terminated by other getUpdates request; make 
 2025-05-31 22:34:30,206 - __main__ - INFO - Пользователь 989822762 (Наталья) запустил бота командой /start
 2025-05-31 22:34:41,826 - __main__ - INFO - Пользователь 989822762 (Наталья) запустил бота командой /start
 2025-05-31 22:34:49,470 - __main__ - INFO - Пользователь 989822762 (Наталья) запустил бота командой /start
+2025-05-31 22:38:04,823 - __main__ - INFO - Бот запущен в 2025-05-31 14:38:04.823735+00:00
+2025-05-31 22:38:06,899 - __main__ - INFO - Startup message sent to admin chat
+2025-05-31 22:38:06,944 - asyncio - ERROR - Task was destroyed but it is pending!
+task: <Task pending name='Application:8190481931:update_fetcher' coro=<Application._update_fetcher() done, defined at C:\Users\CensoredBear.Natalia\habit_tracker_bot\venv\Lib\site-packages\telegram\ext\_application.py:1219> wait_for=<Future cancelled>>
+2025-05-31 22:38:52,817 - __main__ - INFO - Бот запущен в 2025-05-31 14:38:52.817120+00:00
+2025-05-31 22:38:54,293 - __main__ - INFO - Startup message sent to admin chat
+2025-05-31 22:38:55,136 - __main__ - INFO - Игнорируем старое сообщение от 989822762 (отправлено до запуска бота)
+2025-05-31 22:39:43,774 - __main__ - INFO - Бот запущен в 2025-05-31 14:39:43.774165+00:00
+2025-05-31 22:39:46,054 - __main__ - INFO - Startup message sent to admin chat

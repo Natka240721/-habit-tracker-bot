@@ -1,3 +1,6 @@
+# АААААААААААААААААААААА
+
+
 import os
 import json
 import logging
@@ -485,6 +488,7 @@ async def main():
     except Exception as e:
         logger.error(f"Failed to send startup message to admin chat: {e}")
     
+    # Запускаем бота в режиме polling
     await application.updater.start_polling()
     
     # Ждем завершения
@@ -501,8 +505,8 @@ async def main():
 
 if __name__ == '__main__':
     try:
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(main())
+        # Запускаем бота
+        asyncio.run(main())
     except KeyboardInterrupt:
         print("Бот остановлен пользователем")
     except Exception as e:
