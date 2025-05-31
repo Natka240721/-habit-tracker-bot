@@ -1,0 +1,37 @@
+{
+  "989822762": [
+    {
+      "name": "158",
+      "created_at": "2025-05-20T00:49:50.176594",
+      "streak": 0,
+      "last_checked": null,
+      "emoji": "😫",
+      "reminder_time": "12:00"
+    },
+    {
+      "name": "1588",
+      "created_at": "2025-05-20T00:51:44.429268",
+      "streak": 0,
+      "last_checked": null,
+      "reminder_time": "15:53"
+    },
+    {
+      "name": "Прыжки",
+      "created_at": "2025-05-20T01:24:14.941362",
+      "streak": 1,
+      "last_checked": "2025-05-20",
+      "emoji": "🥳",
+      "reminder_time": "12:00"
+    }
+  ],
+  "803981204": [
+    {
+      "name": "Дыхание",
+      "created_at": "2025-05-20T01:26:49.568745",
+      "streak": 0,
+      "last_checked": null,
+      "emoji": "🙃",
+      "reminder_time": "12:00"
+    }
+  ]
+}
