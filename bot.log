@@ -584,3 +584,9 @@ Traceback (most recent call last):
     raise Conflict(message)
 telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
 2025-05-31 22:33:32,774 - __main__ - INFO - Пользователь 989822762 (Наталья) запустил бота командой /start
+2025-05-31 22:34:22,090 - __main__ - INFO - Бот запущен в 2025-05-31 14:34:22.090814+00:00
+2025-05-31 22:34:23,638 - __main__ - INFO - Startup message sent to admin chat
+2025-05-31 22:34:24,500 - __main__ - INFO - Игнорируем старое сообщение от 989822762 (отправлено до запуска бота)
+2025-05-31 22:34:30,206 - __main__ - INFO - Пользователь 989822762 (Наталья) запустил бота командой /start
+2025-05-31 22:34:41,826 - __main__ - INFO - Пользователь 989822762 (Наталья) запустил бота командой /start
+2025-05-31 22:34:49,470 - __main__ - INFO - Пользователь 989822762 (Наталья) запустил бота командой /start
