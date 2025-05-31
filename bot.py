@@ -81,6 +81,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         user = update.effective_user
         logger.info(f"Пользователь {user.id} ({user.first_name}) запустил бота командой /start")
         
+        # Если это админ, отправляем приветствие
+        if str(user.id) == ADMIN_CHAT_ID:
+            await update.message.reply_text("привет")
+        
         keyboard = [
             [InlineKeyboardButton("➕ Добавить привычку", callback_data='add_habit')],
             [InlineKeyboardButton("📋 Мои привычки", callback_data='list_habits')],
@@ -470,22 +474,35 @@ async def main():
     application.add_handler(CallbackQueryHandler(button_handler))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_handler))
     
+    # Запускаем бота
+    await application.initialize()
+    await application.start()
+    
     # Отправляем сообщение в админский чат
     try:
-        await application.bot.send_message(chat_id=ADMIN_CHAT_ID, text="привет")
+        await application.bot.send_message(chat_id=ADMIN_CHAT_ID, text="привет, я запущен")
         logger.info("Startup message sent to admin chat")
     except Exception as e:
         logger.error(f"Failed to send startup message to admin chat: {e}")
     
-    # Запускаем бота
-    await application.initialize()
-    await application.start()
-    await application.run_polling(allowed_updates=Update.ALL_TYPES, poll_interval=3.0)
-    await application.stop()
+    await application.updater.start_polling()
+    
+    # Ждем завершения
+    try:
+        # Бесконечный цикл, который можно прервать Ctrl+C
+        while True:
+            await asyncio.sleep(1)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        await application.updater.stop()
+        await application.stop()
+        await application.shutdown()
 
 if __name__ == '__main__':
     try:
-        asyncio.run(main())
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(main())
     except KeyboardInterrupt:
         print("Бот остановлен пользователем")
     except Exception as e:
