@@ -478,9 +478,10 @@ async def main():
     await application.initialize()
     await application.start()
     
-    # Отправляем сообщение в админский чат
+    # Отправляем сообщение о запуске в админский чат
     try:
-        await application.bot.send_message(chat_id=ADMIN_CHAT_ID, text="привет, я запущен")
+        admin_chat_id = int(os.getenv('ADMIN_CHAT_ID'))
+        await application.bot.send_message(chat_id=admin_chat_id, text=f"Бот запущен! Admin chat ID: {admin_chat_id}")
         logger.info("Startup message sent to admin chat")
     except Exception as e:
         logger.error(f"Failed to send startup message to admin chat: {e}")
