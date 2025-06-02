@@ -86,7 +86,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text("привет")
         
         keyboard = [
-            [InlineKeyboardButton("➕ Добавить КАВЫЧКУ", callback_data='add_habit')],
+            [InlineKeyboardButton("➕ Добавить привычку", callback_data='add_habit')],
             [InlineKeyboardButton("📋 Мои привычки", callback_data='list_habits')],
             [InlineKeyboardButton("✅ Отметить как выполнено", callback_data='mark_done')],
             [InlineKeyboardButton("❌ Удалить привычку", callback_data='delete_habit')],
