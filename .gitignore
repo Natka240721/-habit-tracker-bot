@@ -1,0 +1,20 @@
+# Environment variables
+.env
+
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# User data
+data/
+
+# IDE settings
+.vscode/
+*.code-workspace
+
+# Old versions
+bot_v1-*.py 
