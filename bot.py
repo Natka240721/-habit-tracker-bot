@@ -94,7 +94,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("✅ Отметить как выполнено", callback_data='mark_done')],
             [InlineKeyboardButton("❌ Удалить привычку", callback_data='delete_habit')],
             [InlineKeyboardButton("📊 Статистика", callback_data='stats')],
-            [InlineKeyboardButton("еще что-то", callback_data='more')]
+            [InlineKeyboardButton("опять что-то", callback_data='more')]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(
