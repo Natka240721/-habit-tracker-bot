@@ -94,6 +94,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("✅ Отметить как выполнено", callback_data='mark_done')],
             [InlineKeyboardButton("❌ Удалить привычку", callback_data='delete_habit')],
             [InlineKeyboardButton("📊 Статистика", callback_data='stats')],
+            [InlineKeyboardButton("📝 Цитата дня", callback_data='daily_quote')],
             [InlineKeyboardButton("снова что-то", callback_data='more')]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -248,6 +249,11 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 
                 stats_text += f"\nВсего выполнено сегодня: {total_completed} из {len(user_habits[user_id])} привычек"
                 await query.message.reply_text(stats_text)
+        
+        elif query.data == 'daily_quote':
+            logger.info(f"Пользователь {user.id} запросил цитату дня")
+            # Здесь будет логика получения цитаты
+            await query.message.reply_text("Цитата дня:\n\n«Дорога в тысячу ли начинается с первого шага»\n\n— Лао-цзы")
         
         elif query.data == 'mark_done':
             logger.info(f"Пользователь {user.id} начал процесс отметки привычки как выполненной")
