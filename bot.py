@@ -25,6 +25,9 @@ logging.getLogger('telegram').setLevel(logging.WARNING)
 # Загрузка переменных окружения
 load_dotenv()
 TOKEN = os.getenv('BOT_TOKEN')
+if TOKEN:
+    # Убираем комментарии после токена
+    TOKEN = TOKEN.split('#')[0].strip()
 if not TOKEN:
     raise ValueError("BOT_TOKEN not found in .env file!")
 
@@ -90,7 +93,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("📋 Мои привычки", callback_data='list_habits')],
             [InlineKeyboardButton("✅ Отметить как выполнено", callback_data='mark_done')],
             [InlineKeyboardButton("❌ Удалить привычку", callback_data='delete_habit')],
-            [InlineKeyboardButton("📊 Статистика", callback_data='stats')]
+            [InlineKeyboardButton("📊 Статистика", callback_data='stats')],
+            [InlineKeyboardButton("еще что-то", callback_data='more')]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(
